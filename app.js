@@ -19,6 +19,19 @@ function writeDiversion() {
   });
 }
 
+function writeDropOff() {
+  firebase.database().ref('DropOff/Number').transaction(function(value) {
+    console.log('value', value);
+
+    var endsessionsRef = firebase.database().ref('DropOff/Time');
+    var myEndSessionRef = sessionsRef.push();
+    mySessionRef.update({ startedAt: firebase.database.ServerValue.TIMESTAMP });
+
+    return value + 1;
+  });
+}
+
+
 function writePickUp() {
   firebase.database().ref('PickUp/Number').transaction(function(value) {
     console.log('value', value);
